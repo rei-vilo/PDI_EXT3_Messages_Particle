@@ -37,12 +37,6 @@
         "collapse": false
     },
     {
-        "id": "31b560e0.30b558",
-        "type": "particle-config",
-        "clientId": "messages-2-7329",
-        "clientSecret": "686e3bef8509f36a4383bc6009132c6e7f5243e4"
-    },
-    {
         "id": "10240e8e.7d9c11",
         "type": "ui_tab",
         "name": "Messages",
@@ -51,7 +45,7 @@
         "hidden": false
     },
     {
-        "id": "d2403541.82894",
+        "id": "90a2c2ab.287ca8",
         "type": "ui_form",
         "z": "f4fce238.f20918",
         "name": "",
@@ -86,16 +80,16 @@
         "topic": "UPDATE",
         "topicType": "str",
         "splitLayout": false,
-        "x": 130,
-        "y": 60,
+        "x": 170,
+        "y": 80,
         "wires": [
             [
-                "aaa9f5c5.0d75a"
+                "72f0549f.80afe4"
             ]
         ]
     },
     {
-        "id": "c35cafd6.d408f",
+        "id": "a31cfb75.ed595",
         "type": "ui_switch",
         "z": "f4fce238.f20918",
         "name": "",
@@ -117,26 +111,26 @@
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
-        "x": 150,
-        "y": 200,
+        "x": 190,
+        "y": 220,
         "wires": [
             [
-                "9c9d8d3c.cefc98"
+                "d52de4df.88515"
             ]
         ]
     },
     {
-        "id": "23aae01c.3cf83",
+        "id": "3731d6b1.e8ef12",
         "type": "comment",
         "z": "f4fce238.f20918",
         "name": "",
-        "info": "# Personal Access Token\n\n1. Go to https://console.particle.io/authentication\n\n2. Click on **New Client**\n3. Select **Two-legged Auth (Server)**\n4. Enter the name= `Messages`\n5. Copy the client ID and the key.\n\nExamples\n* Client ID= `messages-1234`\n* Key= `0123456789abcdef0123456789abcdef0123456`\n\nHelp and procedure at https://docs.particle.io/tutorials/device-cloud/authentication/",
-        "x": 640,
-        "y": 320,
+        "info": "# Personal Access Token\n\n1. Go to https://console.particle.io/authentication\n\n2. Click on **New Client**\n3. Select **Two-legged Auth (Server)**\n4. Enter the name= `Messages`\n5. Copy the client ID and the key.\n\n* Client ID= `<client-id>`\n* Key= `<client_key>`\n\nHelp and procedure at https://docs.particle.io/tutorials/device-cloud/authentication/",
+        "x": 680,
+        "y": 340,
         "wires": []
     },
     {
-        "id": "29508482.f1610c",
+        "id": "3432814b.158a3e",
         "type": "ui_button",
         "z": "f4fce238.f20918",
         "name": "",
@@ -154,16 +148,16 @@
         "payloadType": "date",
         "topic": "CLEAR",
         "topicType": "str",
-        "x": 150,
-        "y": 120,
+        "x": 190,
+        "y": 140,
         "wires": [
             [
-                "9c9d8d3c.cefc98"
+                "d52de4df.88515"
             ]
         ]
     },
     {
-        "id": "9c9d8d3c.cefc98",
+        "id": "d52de4df.88515",
         "type": "change",
         "z": "f4fce238.f20918",
         "name": "",
@@ -186,43 +180,43 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 360,
-        "y": 220,
+        "x": 400,
+        "y": 240,
         "wires": [
             [
-                "aa4a9e83.dc6548"
+                "403f3e53.e20e3"
             ]
         ]
     },
     {
-        "id": "a6c243d3.afdf08",
+        "id": "851629ad.82e55",
         "type": "comment",
         "z": "f4fce238.f20918",
         "name": "",
         "info": "# Input \n\n> {\"payload\":{\"1\":\"Line 1\",\"2\":\"Line 2\"},\"topic\":\"UPDATE\"}\n\n# JSONata 1\n\n`{\"data\": [$each(payload, function($v, $k) {$v})], \"action\": \"update\" }`\n\n> {\n>     \"data\": [\n>         \"Line 1\",\n>         \"Line 2\"\n>     ],\n>     \"action\": \"update\"\n> }\n\n# JSONata 2\n\n`{\"data\": [$spread(payload)], \"action\": \"update\" }\n`\n\n> {\n>     \"data\": [\n>         {\n>             \"1\": \"aaa\\nbbb\\nccc\"\n>         },\n>         {\n>             \"2\": \"ddd\"\n>         }\n>     ],\n>     \"action\": \"update\"\n> }\n\n# JSONata 3\n\n`{\"data\": payload, \"action\": topic }`\n\n> {\n>     \"data\": {\n>         \"1\": \"aaa\\nbbb\\nccc\",\n>         \"2\": \"ddd\"\n>     },\n>     \"action\": \"UPDATE\"\n> }",
-        "x": 380,
-        "y": 180,
+        "x": 420,
+        "y": 200,
         "wires": []
     },
     {
-        "id": "aa4a9e83.dc6548",
+        "id": "403f3e53.e20e3",
         "type": "json",
         "z": "f4fce238.f20918",
         "name": "",
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 390,
-        "y": 280,
+        "x": 430,
+        "y": 300,
         "wires": [
             [
-                "575a4e5b.f6fcc",
-                "7cf34dc0.a27a94"
+                "656cbba1.dfac8c",
+                "31ad7f39.af8678"
             ]
         ]
     },
     {
-        "id": "575a4e5b.f6fcc",
+        "id": "656cbba1.dfac8c",
         "type": "debug",
         "z": "f4fce238.f20918",
         "name": "",
@@ -234,12 +228,12 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 810,
-        "y": 240,
+        "x": 850,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "7cf34dc0.a27a94",
+        "id": "31ad7f39.af8678",
         "type": "switch",
         "z": "f4fce238.f20918",
         "name": "",
@@ -258,20 +252,20 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 390,
-        "y": 340,
+        "x": 430,
+        "y": 360,
         "wires": [
             [
-                "ebe200ed.aeaa48",
-                "e5997f50.fd19c"
+                "72da34a3.7ebb04",
+                "5f96608e.fc409"
             ],
             [
-                "273d3ac1.6d244e"
+                "9983b9a6.301df8"
             ]
         ]
     },
     {
-        "id": "b6a51ca7.cd45b8",
+        "id": "9be3962b.fb7ab",
         "type": "ui_toast",
         "z": "f4fce238.f20918",
         "position": "top right",
@@ -284,12 +278,12 @@
         "raw": false,
         "topic": "",
         "name": "",
-        "x": 660,
-        "y": 440,
+        "x": 700,
+        "y": 460,
         "wires": []
     },
     {
-        "id": "273d3ac1.6d244e",
+        "id": "9983b9a6.301df8",
         "type": "change",
         "z": "f4fce238.f20918",
         "name": "",
@@ -314,36 +308,36 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 360,
-        "y": 400,
+        "x": 400,
+        "y": 420,
         "wires": [
             [
-                "b6a51ca7.cd45b8"
+                "9be3962b.fb7ab"
             ]
         ]
     },
     {
-        "id": "55540ab1.d40594",
+        "id": "d691c3af.97267",
         "type": "json",
         "z": "f4fce238.f20918",
         "name": "",
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 270,
-        "y": 560,
+        "x": 310,
+        "y": 580,
         "wires": [
             [
-                "15b878be.fd0587",
-                "6e878147.a1d328",
-                "437862a6.8d8ea4",
-                "290ce7c3.1c7848",
-                "6cedb9f6.a6aad"
+                "19116a93.883f7d",
+                "cbeeef1a.0f56b8",
+                "357383a7.3f3b0c",
+                "de736091.25d5",
+                "52ebcfdd.7433e8"
             ]
         ]
     },
     {
-        "id": "ebe200ed.aeaa48",
+        "id": "5f96608e.fc409",
         "type": "ui_text",
         "z": "f4fce238.f20918",
         "group": "9ee141ba.19cb8",
@@ -354,12 +348,12 @@
         "label": "",
         "format": "{{msg.payload}}",
         "layout": "row-left",
-        "x": 630,
-        "y": 480,
+        "x": 670,
+        "y": 500,
         "wires": []
     },
     {
-        "id": "aaa9f5c5.0d75a",
+        "id": "72f0549f.80afe4",
         "type": "change",
         "z": "f4fce238.f20918",
         "name": "",
@@ -377,16 +371,16 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 360,
-        "y": 80,
+        "x": 400,
+        "y": 100,
         "wires": [
             [
-                "aa4a9e83.dc6548"
+                "403f3e53.e20e3"
             ]
         ]
     },
     {
-        "id": "42ae02eb.eaca84",
+        "id": "da636ded.6be2c8",
         "type": "ui_text",
         "z": "f4fce238.f20918",
         "group": "d3f45b63.8aeba8",
@@ -397,12 +391,12 @@
         "label": "Top",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 630,
-        "y": 580,
+        "x": 670,
+        "y": 600,
         "wires": []
     },
     {
-        "id": "360e35a4.c5c12a",
+        "id": "16f6d037.62c1",
         "type": "ui_text",
         "z": "f4fce238.f20918",
         "group": "d3f45b63.8aeba8",
@@ -413,12 +407,12 @@
         "label": "Lines",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 630,
-        "y": 620,
+        "x": 670,
+        "y": 640,
         "wires": []
     },
     {
-        "id": "5e1f70a4.595bd8",
+        "id": "153f4b07.182eed",
         "type": "ui_text",
         "z": "f4fce238.f20918",
         "group": "d3f45b63.8aeba8",
@@ -429,12 +423,12 @@
         "label": "Bottom",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 640,
-        "y": 660,
+        "x": 680,
+        "y": 680,
         "wires": []
     },
     {
-        "id": "15b878be.fd0587",
+        "id": "19116a93.883f7d",
         "type": "change",
         "z": "f4fce238.f20918",
         "name": "",
@@ -452,16 +446,16 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
-        "y": 700,
+        "x": 480,
+        "y": 720,
         "wires": [
             [
-                "fcef220.593bb6"
+                "79f9f8de.e413d"
             ]
         ]
     },
     {
-        "id": "2551e604.76330a",
+        "id": "917dfff6.91a29",
         "type": "ui_button",
         "z": "f4fce238.f20918",
         "name": "",
@@ -479,16 +473,16 @@
         "payloadType": "str",
         "topic": "",
         "topicType": "str",
-        "x": 150,
-        "y": 440,
+        "x": 190,
+        "y": 460,
         "wires": [
             [
-                "ee34b666.7b6cd8"
+                "ff8655ee.a479d"
             ]
         ]
     },
     {
-        "id": "6e878147.a1d328",
+        "id": "cbeeef1a.0f56b8",
         "type": "change",
         "z": "f4fce238.f20918",
         "name": "",
@@ -506,16 +500,16 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
-        "y": 660,
+        "x": 480,
+        "y": 680,
         "wires": [
             [
-                "5e1f70a4.595bd8"
+                "153f4b07.182eed"
             ]
         ]
     },
     {
-        "id": "437862a6.8d8ea4",
+        "id": "357383a7.3f3b0c",
         "type": "change",
         "z": "f4fce238.f20918",
         "name": "",
@@ -533,16 +527,16 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
-        "y": 620,
+        "x": 480,
+        "y": 640,
         "wires": [
             [
-                "360e35a4.c5c12a"
+                "16f6d037.62c1"
             ]
         ]
     },
     {
-        "id": "290ce7c3.1c7848",
+        "id": "de736091.25d5",
         "type": "change",
         "z": "f4fce238.f20918",
         "name": "",
@@ -560,16 +554,16 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
-        "y": 580,
+        "x": 480,
+        "y": 600,
         "wires": [
             [
-                "42ae02eb.eaca84"
+                "da636ded.6be2c8"
             ]
         ]
     },
     {
-        "id": "6cedb9f6.a6aad",
+        "id": "52ebcfdd.7433e8",
         "type": "change",
         "z": "f4fce238.f20918",
         "name": "",
@@ -587,16 +581,16 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
-        "y": 740,
+        "x": 480,
+        "y": 760,
         "wires": [
             [
-                "4ca5f386.033dec"
+                "ab3fc38d.9654f8"
             ]
         ]
     },
     {
-        "id": "4ca5f386.033dec",
+        "id": "ab3fc38d.9654f8",
         "type": "debug",
         "z": "f4fce238.f20918",
         "name": "",
@@ -605,31 +599,44 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 810,
-        "y": 740,
+        "x": 850,
+        "y": 760,
         "wires": []
     },
     {
-        "id": "ee34b666.7b6cd8",
+        "id": "72da34a3.7ebb04",
+        "type": "particle-publish",
+        "z": "f4fce238.f20918",
+        "name": "publish",
+        "auth": "",
+        "scope": "user",
+        "product": "",
+        "event": "882b0215-d729-4958-881f-8a416e8de884",
+        "x": 680,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "ff8655ee.a479d",
         "type": "particle-variable",
         "z": "f4fce238.f20918",
         "name": "",
-        "auth": "31b560e0.30b558",
+        "auth": "",
         "variable": "Trace",
         "scope": "user",
         "device": "myPhoton",
         "product": "",
-        "x": 340,
-        "y": 480,
+        "x": 380,
+        "y": 500,
         "wires": [
             [
-                "ebe200ed.aeaa48",
-                "55540ab1.d40594"
+                "5f96608e.fc409",
+                "d691c3af.97267"
             ]
         ]
     },
     {
-        "id": "fcef220.593bb6",
+        "id": "79f9f8de.e413d",
         "type": "ui_led",
         "z": "f4fce238.f20918",
         "order": 2,
@@ -641,24 +648,26 @@
         "labelAlignment": "left",
         "colorForValue": [
             {
-                "color": "black",
+                "color": "#000000",
                 "value": "false",
                 "valueType": "str"
             },
             {
-                "color": "blue",
+                "color": "#0000ff",
                 "value": "true",
                 "valueType": "str"
             }
         ],
         "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": false,
         "name": "LED",
-        "x": 630,
-        "y": 700,
+        "x": 670,
+        "y": 720,
         "wires": []
     },
     {
-        "id": "b17c59af.4ad89",
+        "id": "674ab529.794dac",
         "type": "ui_button",
         "z": "f4fce238.f20918",
         "name": "",
@@ -676,16 +685,35 @@
         "payloadType": "date",
         "topic": "UP",
         "topicType": "str",
-        "x": 150,
-        "y": 160,
+        "x": 190,
+        "y": 180,
         "wires": [
             [
-                "9c9d8d3c.cefc98"
+                "d52de4df.88515"
             ]
         ]
     },
     {
-        "id": "c6ff67f9.f042f",
+        "id": "e393d4a6.49eb9",
+        "type": "particle-subscribe",
+        "z": "f4fce238.f20918",
+        "name": "subscribe",
+        "auth": "",
+        "scope": "user",
+        "product": "",
+        "event": "882b0215-d729-4958-881f-8a416e8de885",
+        "device": "",
+        "x": 160,
+        "y": 800,
+        "wires": [
+            [
+                "cdbd5029.0d7c",
+                "b7443e08.62181"
+            ]
+        ]
+    },
+    {
+        "id": "cdbd5029.0d7c",
         "type": "debug",
         "z": "f4fce238.f20918",
         "name": "",
@@ -697,12 +725,12 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 810,
-        "y": 780,
+        "x": 850,
+        "y": 800,
         "wires": []
     },
     {
-        "id": "df101e60.c6691",
+        "id": "b7443e08.62181",
         "type": "ui_led",
         "z": "f4fce238.f20918",
         "order": 2,
@@ -728,33 +756,8 @@
         "shape": "circle",
         "showGlow": false,
         "name": "Ready",
-        "x": 630,
-        "y": 780,
+        "x": 670,
+        "y": 800,
         "wires": []
-    },
-    {
-        "id": "e5997f50.fd19c",
-        "type": "particle-publish",
-        "z": "f4fce238.f20918",
-        "name": "",
-        "scope": "user",
-        "x": 640,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "92fd21d7.e213a8",
-        "type": "particle-subscribe",
-        "z": "f4fce238.f20918",
-        "name": "",
-        "scope": "user",
-        "x": 140,
-        "y": 780,
-        "wires": [
-            [
-                "c6ff67f9.f042f",
-                "df101e60.c6691"
-            ]
-        ]
     }
 ]
