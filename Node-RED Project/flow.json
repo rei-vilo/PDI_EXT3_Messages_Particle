@@ -45,6 +45,102 @@
         "hidden": false
     },
     {
+        "id": "1d93dae3.b2f445",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
         "id": "90a2c2ab.287ca8",
         "type": "ui_form",
         "z": "f4fce238.f20918",
@@ -80,8 +176,8 @@
         "topic": "UPDATE",
         "topicType": "str",
         "splitLayout": false,
-        "x": 170,
-        "y": 80,
+        "x": 130,
+        "y": 40,
         "wires": [
             [
                 "72f0549f.80afe4"
@@ -111,8 +207,8 @@
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
-        "x": 190,
-        "y": 220,
+        "x": 150,
+        "y": 180,
         "wires": [
             [
                 "d52de4df.88515"
@@ -125,8 +221,8 @@
         "z": "f4fce238.f20918",
         "name": "",
         "info": "# Personal Access Token\n\n1. Go to https://console.particle.io/authentication\n\n2. Click on **New Client**\n3. Select **Two-legged Auth (Server)**\n4. Enter the name= `Messages`\n5. Copy the client ID and the key.\n\n* Client ID= `<client-id>`\n* Key= `<client_key>`\n\nHelp and procedure at https://docs.particle.io/tutorials/device-cloud/authentication/",
-        "x": 680,
-        "y": 340,
+        "x": 640,
+        "y": 300,
         "wires": []
     },
     {
@@ -148,8 +244,8 @@
         "payloadType": "date",
         "topic": "CLEAR",
         "topicType": "str",
-        "x": 190,
-        "y": 140,
+        "x": 150,
+        "y": 100,
         "wires": [
             [
                 "d52de4df.88515"
@@ -180,8 +276,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 400,
-        "y": 240,
+        "x": 360,
+        "y": 200,
         "wires": [
             [
                 "403f3e53.e20e3"
@@ -194,8 +290,8 @@
         "z": "f4fce238.f20918",
         "name": "",
         "info": "# Input \n\n> {\"payload\":{\"1\":\"Line 1\",\"2\":\"Line 2\"},\"topic\":\"UPDATE\"}\n\n# JSONata 1\n\n`{\"data\": [$each(payload, function($v, $k) {$v})], \"action\": \"update\" }`\n\n> {\n>     \"data\": [\n>         \"Line 1\",\n>         \"Line 2\"\n>     ],\n>     \"action\": \"update\"\n> }\n\n# JSONata 2\n\n`{\"data\": [$spread(payload)], \"action\": \"update\" }\n`\n\n> {\n>     \"data\": [\n>         {\n>             \"1\": \"aaa\\nbbb\\nccc\"\n>         },\n>         {\n>             \"2\": \"ddd\"\n>         }\n>     ],\n>     \"action\": \"update\"\n> }\n\n# JSONata 3\n\n`{\"data\": payload, \"action\": topic }`\n\n> {\n>     \"data\": {\n>         \"1\": \"aaa\\nbbb\\nccc\",\n>         \"2\": \"ddd\"\n>     },\n>     \"action\": \"UPDATE\"\n> }",
-        "x": 420,
-        "y": 200,
+        "x": 380,
+        "y": 160,
         "wires": []
     },
     {
@@ -206,8 +302,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 430,
-        "y": 300,
+        "x": 390,
+        "y": 260,
         "wires": [
             [
                 "656cbba1.dfac8c",
@@ -228,8 +324,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 260,
+        "x": 810,
+        "y": 220,
         "wires": []
     },
     {
@@ -252,8 +348,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 430,
-        "y": 360,
+        "x": 390,
+        "y": 320,
         "wires": [
             [
                 "72da34a3.7ebb04",
@@ -278,8 +374,8 @@
         "raw": false,
         "topic": "",
         "name": "",
-        "x": 700,
-        "y": 460,
+        "x": 660,
+        "y": 420,
         "wires": []
     },
     {
@@ -308,8 +404,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 400,
-        "y": 420,
+        "x": 360,
+        "y": 380,
         "wires": [
             [
                 "9be3962b.fb7ab"
@@ -324,8 +420,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 310,
-        "y": 580,
+        "x": 270,
+        "y": 540,
         "wires": [
             [
                 "19116a93.883f7d",
@@ -348,8 +444,8 @@
         "label": "",
         "format": "{{msg.payload}}",
         "layout": "row-left",
-        "x": 670,
-        "y": 500,
+        "x": 630,
+        "y": 460,
         "wires": []
     },
     {
@@ -371,8 +467,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 400,
-        "y": 100,
+        "x": 360,
+        "y": 60,
         "wires": [
             [
                 "403f3e53.e20e3"
@@ -391,8 +487,8 @@
         "label": "Top",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 670,
-        "y": 600,
+        "x": 630,
+        "y": 560,
         "wires": []
     },
     {
@@ -407,8 +503,8 @@
         "label": "Lines",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 670,
-        "y": 640,
+        "x": 630,
+        "y": 600,
         "wires": []
     },
     {
@@ -423,8 +519,8 @@
         "label": "Bottom",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 680,
-        "y": 680,
+        "x": 640,
+        "y": 640,
         "wires": []
     },
     {
@@ -446,8 +542,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 480,
-        "y": 720,
+        "x": 440,
+        "y": 680,
         "wires": [
             [
                 "79f9f8de.e413d"
@@ -473,8 +569,8 @@
         "payloadType": "str",
         "topic": "",
         "topicType": "str",
-        "x": 190,
-        "y": 460,
+        "x": 150,
+        "y": 420,
         "wires": [
             [
                 "ff8655ee.a479d"
@@ -500,8 +596,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 480,
-        "y": 680,
+        "x": 440,
+        "y": 640,
         "wires": [
             [
                 "153f4b07.182eed"
@@ -527,8 +623,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 480,
-        "y": 640,
+        "x": 440,
+        "y": 600,
         "wires": [
             [
                 "16f6d037.62c1"
@@ -554,8 +650,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 480,
-        "y": 600,
+        "x": 440,
+        "y": 560,
         "wires": [
             [
                 "da636ded.6be2c8"
@@ -581,8 +677,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 480,
-        "y": 760,
+        "x": 440,
+        "y": 720,
         "wires": [
             [
                 "ab3fc38d.9654f8"
@@ -599,8 +695,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 850,
-        "y": 760,
+        "x": 810,
+        "y": 720,
         "wires": []
     },
     {
@@ -611,9 +707,9 @@
         "auth": "",
         "scope": "user",
         "product": "",
-        "event": "882b0215-d729-4958-881f-8a416e8de884",
-        "x": 680,
-        "y": 380,
+        "event": "9ac6b059-bfa5-4ae2-b1cc-a9b3a797884f",
+        "x": 640,
+        "y": 340,
         "wires": []
     },
     {
@@ -626,8 +722,8 @@
         "scope": "user",
         "device": "myPhoton",
         "product": "",
-        "x": 380,
-        "y": 500,
+        "x": 340,
+        "y": 460,
         "wires": [
             [
                 "5f96608e.fc409",
@@ -662,8 +758,8 @@
         "shape": "circle",
         "showGlow": false,
         "name": "LED",
-        "x": 670,
-        "y": 720,
+        "x": 630,
+        "y": 680,
         "wires": []
     },
     {
@@ -685,8 +781,8 @@
         "payloadType": "date",
         "topic": "UP",
         "topicType": "str",
-        "x": 190,
-        "y": 180,
+        "x": 150,
+        "y": 140,
         "wires": [
             [
                 "d52de4df.88515"
@@ -701,10 +797,10 @@
         "auth": "",
         "scope": "user",
         "product": "",
-        "event": "882b0215-d729-4958-881f-8a416e8de885",
-        "device": "",
-        "x": 160,
-        "y": 800,
+        "event": "9ac6b059-bfa5-4ae2-b1cc-a9b3a7978850",
+        "device": "myPhoton",
+        "x": 120,
+        "y": 760,
         "wires": [
             [
                 "cdbd5029.0d7c",
@@ -725,8 +821,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 800,
+        "x": 810,
+        "y": 760,
         "wires": []
     },
     {
@@ -756,8 +852,8 @@
         "shape": "circle",
         "showGlow": false,
         "name": "Ready",
-        "x": 670,
-        "y": 800,
+        "x": 630,
+        "y": 760,
         "wires": []
     }
 ]

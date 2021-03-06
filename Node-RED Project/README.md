@@ -1,9 +1,7 @@
-PDI_EXT3_Messages_Particle
-==========================
+# Remote e-Paper Messages Panel
 
-Node-RED project for PDI_EXT3_Messages_Particle
+This is the Node-RED project for the `PDI_EXT3_Messages_Particle` project.
 
 ### About
 
-This is your project's README.md file. It helps users understand what your
-project does, how to use it and anything else they may need to know.
+Please refer to [Hackster.io](https://www.hackster.io/rei-vilo/remote-e-paper-messages-panel-1faa0c) for detailed instructions.
