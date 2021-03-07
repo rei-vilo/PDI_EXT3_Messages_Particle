@@ -707,7 +707,7 @@
         "auth": "",
         "scope": "user",
         "product": "",
-        "event": "9ac6b059-bfa5-4ae2-b1cc-a9b3a797884f",
+        "event": "",
         "x": 640,
         "y": 340,
         "wires": []
@@ -720,7 +720,7 @@
         "auth": "",
         "variable": "Trace",
         "scope": "user",
-        "device": "myPhoton",
+        "device": "",
         "product": "",
         "x": 340,
         "y": 460,
@@ -797,8 +797,8 @@
         "auth": "",
         "scope": "user",
         "product": "",
-        "event": "9ac6b059-bfa5-4ae2-b1cc-a9b3a7978850",
-        "device": "myPhoton",
+        "event": "",
+        "device": "",
         "x": 120,
         "y": 760,
         "wires": [
