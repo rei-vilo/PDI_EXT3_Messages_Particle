@@ -43,10 +43,10 @@
 #define mySerial Serial
 
 // Select mode
-// SEMI_AUTOMATIC: run 
+// SEMI_AUTOMATIC: run
 /// @see https://docs.particle.io/reference/device-os/firmware/photon/#semi-automatic-mode
 //SYSTEM_MODE(SEMI_AUTOMATIC);
-// AUTOMATIC: first connect, then run 
+// AUTOMATIC: first connect, then run
 /// @see https://docs.particle.io/reference/device-os/firmware/photon/#automatic-mode
 SYSTEM_MODE(AUTOMATIC);
 
@@ -127,7 +127,7 @@ bool isReady = false;
 
 
 // Prototypes
-void myHandler(const char *event, const char *data);
+void myHandler(const char * event, const char * data);
 void printCentered(uint16_t dY, String text, uint16_t colour = myColours.black);
 void printStack();
 void getParticleTime();
@@ -224,7 +224,7 @@ void printStack()
     myScreen.gText(x, y, stackTop.event, myColours.white, myColours.red);
     y += myScreen.characterSizeY();
 
-// Lines
+    // Lines
     uint8_t number = 0;
     for (uint8_t i = 0; i < LAST_LINE; i++)
     {
@@ -243,7 +243,7 @@ void printStack()
         }
     }
 
-// Bottom
+    // Bottom
     myScreen.selectFont(fontMedium);
     Serial.println(formatString("  . Line %s: %s", "bottom", stackBottom.event.c_str()));
     y = myScreen.screenSizeY() - myScreen.characterSizeY();
@@ -269,7 +269,7 @@ void getParticleTime()
 
 // Utilities
 // Particle received message
-void myHandler(const char *event, const char *data)
+void myHandler(const char * event, const char * data)
 {
     isReady = false;
 
@@ -284,12 +284,12 @@ void myHandler(const char *event, const char *data)
     mySerial.println(value);
 
     DynamicJsonBuffer jsonBuffer;
-    JsonObject& root = jsonBuffer.parseObject((char*)value.c_str());
-    topic = (String)(const char*)root["action"];
+    JsonObject & root = jsonBuffer.parseObject((char *)value.c_str());
+    topic = (String)(const char *)root["action"];
 
     if (topic == "LED")
     {
-        value = (String)(const char*)root["data"];
+        value = (String)(const char *)root["data"];
         mySerial.print(">>> symbolLED: .");
         mySerial.print(value);
         mySerial.println(".");
@@ -320,8 +320,8 @@ void myHandler(const char *event, const char *data)
     else if (topic == "UPDATE")
     {
         // First event
-        String value1 = (String)(const char*)root["data"]["1"];
-        String value2 = (String)(const char*)root["data"]["2"];
+        String value1 = (String)(const char *)root["data"]["1"];
+        String value2 = (String)(const char *)root["data"]["2"];
 
 #if (LOCAL_SERIAL > 0)
         Serial.println(formatString("%2i: .%s.", 1, value1.c_str()));
@@ -337,7 +337,7 @@ void myHandler(const char *event, const char *data)
             stackAdd(value2);
         }
 
-// Bottom
+        // Bottom
         stackBottom.flag = true;
         stackBottom.event = formatString("Last update: %02i:%02i:%02i", Time.hour(), Time.minute(), Time.second());
 
